@@ -1,13 +1,49 @@
-// Wait for the document to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Navbar scroll effect
+    // ======================
+    // Hamburger Menu & Sidebar
+    // ======================
+    const hamburger = document.getElementById('hamburger-menu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const closeButton = document.querySelector('.sidebar-close');
+    
+    // Function to open sidebar
+    function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.classList.add('sidebar-open');
+    }
+    
+    // Function to close sidebar
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    }
+    
+    // Toggle sidebar when hamburger menu is clicked
+    if (hamburger && sidebar && overlay) {
+        hamburger.addEventListener('click', openSidebar);
+        
+        // Close sidebar when overlay is clicked
+        overlay.addEventListener('click', closeSidebar);
+        
+        // Close sidebar when close button is clicked
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSidebar);
+        }
+    }
+    
+    // ======================
+    // Navbar Scroll Effect
+    // ======================
     const navbar = document.querySelector('.navbar');
     
     function checkScroll() {
         if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+            navbar?.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            navbar?.classList.remove('scrolled');
         }
     }
     
@@ -17,7 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on scroll
     window.addEventListener('scroll', checkScroll);
     
-    // Smooth scrolling for anchor links
+    // ======================
+    // Smooth Scrolling
+    // ======================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -34,34 +72,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // If mobile menu is open, close it after clicking a link
                 const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
+                if (navbarCollapse?.classList.contains('show')) {
                     navbarCollapse.classList.remove('show');
+                }
+                
+                // Close sidebar if open
+                if (sidebar?.classList.contains('open')) {
+                    closeSidebar();
                 }
             }
         });
     });
     
-    // Hero Slider functionality
+    // ======================
+    // Hero Slider
+    // ======================
     const heroSection = document.querySelector('.hero-section');
     const prevButton = document.querySelector('.carousel-control.prev');
     const nextButton = document.querySelector('.carousel-control.next');
     
     // Array of background images for the slider
     const heroImages = [
-        'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2000',
-        'https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&q=80&w=2000',
-        'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=2000',
-        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2000'
+        'public/assets/slide-1.jpg',
+        'public/assets/slide-2.jpg',
     ];
     
     let currentImageIndex = 0;
     
     // Function to update the background image
     function updateHeroBackground(index) {
-        heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${heroImages[index]}')`;
+        if (heroSection) {
+            heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${heroImages[index]}')`;
+        }
     }
     
-    if (prevButton && nextButton) {
+    if (prevButton && nextButton && heroSection) {
+        // Initialize first image
+        updateHeroBackground(currentImageIndex);
+        
         // Event listener for previous button
         prevButton.addEventListener('click', function() {
             currentImageIndex = (currentImageIndex - 1 + heroImages.length) % heroImages.length;
@@ -90,9 +138,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Back to top button functionality
+    // ======================
+    // Back to Top Button
+    // ======================
     const backToTop = document.querySelector('.back-to-top');
     if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
         backToTop.addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({
