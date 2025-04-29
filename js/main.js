@@ -410,4 +410,12 @@ clientsWrapper.addEventListener("mouseleave", () => {
   startSlider();
 });
 
+
+
+
+
+
 });
+
+
+

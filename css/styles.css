@@ -1184,5 +1184,22 @@ body.sidebar-open {
 
 
 
-
+  .paddingcontrol {
+    /* Mobile-first approach */
+    padding: 0 1rem; /* Smaller padding for mobile devices */
+  }
   
+  /* Tablet devices */
+  @media (min-width: 768px) {
+    .paddingcontrol {
+      padding: 0 5rem; /* Medium padding for tablets */
+    }
+  }
+  
+  /* Laptop and desktop */
+  @media (min-width: 1024px) {
+    .paddingcontrol {
+      padding: 0 10rem; /* Your original desktop padding */
+    }
+  }
+
