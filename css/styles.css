@@ -592,6 +592,8 @@ body.sidebar-open {
 }
 
 .features-section {
+    padding-bottom: 5rem; /* Adds bottom padding */
+    margin-bottom: 5rem;
   padding: 4rem 0;
 }
 
@@ -869,8 +871,318 @@ body.sidebar-open {
 
 
 
+@media (max-width: 767px) {
+    .carousel-controls {
+      display: none !important;
+    }
+  
+    /* Show only the first slide on mobile */
+    .hero-slide {
+      display: none !important;
+    }
+  
+    .hero-slide.active {
+      display: flex !important;
+    }
+    
+    /* Optional: Adjust hero content for mobile */
+    .hero-content {
+      padding: 0 15px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2rem !important;
+    }
+    
+    .hero-content p {
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Ensure carousel functionality remains for larger screens */
+  @media (min-width: 768px) {
+    .carousel-controls {
+      display: flex;
+    }
+  }
 
 
 
 
 
+  /* Responsive adjustments for sidebar width */
+  @media (max-width: 767px) {
+    .sidebar {
+      width: 330px;
+      right: -330px;
+    }
+    
+    /* Optional: Adjust padding for mobile */
+    .sidebar-menu li a {
+      padding: 12px 15px;
+    }
+    
+    .sidebar-close {
+      top: 15px;
+      right: 15px;
+    }
+  }
+  
+  /* Extra small devices */
+  @media (max-width: 375px) {
+    .sidebar {
+      width: 250px;
+      right: -250px;
+    }
+  }
+  
+  .sidebar.open {
+    right: 0;
+  }
+  
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 120;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+  
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .sidebar-menu li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-menu li a:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+  }
+  
+  .sidebar-footer {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+  
+  .sidebar-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  body.sidebar-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+  
+  .sidebar-close:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+  }
+
+/* Mobile Hero Styling */
+@media (max-width: 767px) {
+    .hero-content {
+      padding: 0 15px;
+    }
+    
+    /* Mobile-specific h1 that replaces the desktop version */
+    .hero-content h1.display-4 {
+      display: none; /* Hide the desktop version on mobile */
+    }
+    
+    /* Show the mobile version */
+    .hero-content .mobile-heading {
+      display: block !important; /* Show on mobile only */
+      font-size: 1.9rem !important;
+      font-weight: bold;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.05em;
+      /* word-spacing: -0.05em; removed */
+    }
+    
+    /* Style for the mobile heading lines */
+    .hero-content .mobile-heading .line-1,
+    .hero-content .mobile-heading .line-2 {
+      display: block;
+      text-align: center;
+    }
+    
+    /* Paragraph and button styles remain the same */
+    .hero-content p.lead {
+      font-size: 1.125rem !important;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    
+    .hero-content .btn-hero {
+      width: auto;
+      max-width: 180px;
+      padding: 12px 20px;
+      height: auto;
+      font-size: 0.875rem !important;
+      white-space: nowrap;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      margin: 0 auto;
+      display: inline-block;
+    }
+    
+    .hero-content .btn-hero i {
+      font-size: 0.75rem;
+      margin-left: 0.5rem !important;
+    }
+  }
+    
+    /* Increase paragraph text size */
+    .hero-content p.lead {
+      font-size: 1.125rem !important;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    
+    /* Button adjustments */
+    .hero-content .btn-hero {
+      width: auto;        /* Decrease width */
+      max-width: 180px;   /* Limit maximum width */
+      padding: 12px 20px; /* Increase height with padding */
+      height: auto;       /* Let height be determined by padding */
+      font-size: 0.875rem !important; /* Reduce text size */
+      white-space: nowrap;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Optional: add shadow for emphasis */
+      margin: 0 auto;     /* Center the button */
+      display: inline-block;
+    }
+    
+    /* Adjust icon spacing */
+    .hero-content .btn-hero i {
+      font-size: 0.75rem;
+      margin-left: 0.5rem !important;
+    }
+  
+  
+  /* For extra small screens */
+  @media (max-width: 375px) {
+    .hero-content h1.display-4 {
+      font-size: 1.75rem !important;
+      letter-spacing: -0.04em; /* Further reduce letter spacing on very small screens */
+    }
+    
+    .hero-content p.lead {
+      font-size: 1rem !important;
+    }
+  }
+
+
+
+  /* Desktop/laptop styles - will be hidden on mobile */
+.desktop-content {
+    display: block;
+  }
+  
+  /* Mobile styles */
+  .mobile-content {
+    display: none;
+  }
+  
+  /* Extra bold class for mobile h2 */
+  .mobile-extra-bold {
+    font-weight: 900;
+  }
+  
+  /* Center alignment for mobile view */
+  .mobile-center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Mobile specific styles */
+  @media (max-width: 768px) {
+    /* Hide desktop content */
+    .desktop-content {
+      display: none;
+    }
+    
+    /* Show mobile content */
+    .mobile-content {
+      display: block;
+    }
+    
+    /* Center the left column content */
+    .features-section .col-lg-6 .features-text {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 2rem; /* Adds bottom padding */
+    }
+    
+    /* Mobile h2 styling with line breaks */
+    .features-section h2.mobile-title {
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    /* Mobile paragraph with line breaks */
+    .features-section p.mobile-paragraph {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    /* Reduce left column width for better centering */
+    .features-section .col-lg-6 {
+      width: 100%;
+      padding: 0 20px;
+    }
+    
+    /* Center button */
+    .features-section .btn {
+      margin: 0 auto;
+      display: block;
+      max-width: fit-content;
+    }
+  }
+
+
+
+
+  

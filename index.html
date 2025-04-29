@@ -72,9 +72,17 @@
           class="container h-100 d-flex justify-content-center align-items-center"
         >
           <div class="hero-content text-center">
+            <!-- Desktop heading - visible by default -->
             <h1 class="display-4 fw-bold text-white animate-text">
               Lorem ipsum dolor sit<br /><span class="d-block">amet</span>
             </h1>
+
+            <!-- Mobile heading - hidden by default, only shown on mobile -->
+            <div class="mobile-heading fw-bold text-white animate-text d-none">
+              <span class="line-1">Lorem ipsum</span>
+              <span class="line-2">dolor sit amet</span>
+            </div>
+
             <p class="lead text-white-50 animate-p-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
@@ -91,9 +99,17 @@
           class="container h-100 d-flex justify-content-center align-items-center"
         >
           <div class="hero-content text-center">
+            <!-- Desktop heading - visible by default -->
             <h1 class="display-4 fw-bold text-white animate-text">
               Lorem ipsum dolor sit<br /><span class="d-block">amet</span>
             </h1>
+
+            <!-- Mobile heading - hidden by default, only shown on mobile -->
+            <div class="mobile-heading fw-bold text-white animate-text d-none">
+              <span class="line-1">Lorem ipsum</span>
+              <span class="line-2">dolor sit amet</span>
+            </div>
+
             <p class="lead text-white-50 animate-p-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
@@ -103,7 +119,6 @@
           </div>
         </div>
       </div>
-
       <div class="carousel-controls">
         <button class="carousel-control prev" aria-label="Previous slide">
           <i class="fas fa-chevron-left"></i>
@@ -114,111 +129,114 @@
       </div>
     </section>
 
-    <section id="features" class="features-section py-5">
-        <div class="container">
-          <div class="row align-items-center">
-            <!-- Left column with text content -->
-            <div class="col-lg-6">
-              <div class="features-text scroll-reveal-left">
-                <span class="subheading">LOREM IPSUM DOLOR SIT AMET</span>
-                <h2 class="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </h2>
-                <p class="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  ac erat at nisi rutrum auctor. Sed ac libero vestibulum, aliquet
-                  dui sed, condimentum urna. Nulls facilisi. Vivamus non justo
-                  niosis, venenatis dui id, pharetra lectus. Ut eu quis turpis.
-                  Sapien venenatis magna eu nisi auctor, suscipit.
-                </p>
-                <a href="#" class="btn btn-outline-primary mt-3">LOREM IPSUM</a>
+    <section id="features" class="features-section py-5 mb-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left column with text content -->
+      <div class="col-lg-6">
+        <div class="features-text scroll-reveal-left">
+          <span class="subheading">LOREM IPSUM DOLOR SIT AMET</span>
+          <h2 class="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </h2>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac erat at nisi rutrum auctor. Sed ac libero vestibulum, aliquet dui sed, condimentum urna. Nulls facilisi. Vivamus non justo niosis, venenatis dui id, pharetra lectus. Ut eu quis turpis. Sapien venenatis magna eu nisi auctor, suscipit.
+          </p>
+          <a href="#" class="btn btn-outline-primary mt-3">LOREM IPSUM</a>
+        </div>
+      </div>
+      
+      <!-- Right column with image and card -->
+      <div class="col-lg-6">
+        <div class="row g-0 justify-content-center">
+          <!-- Image and card column for mobile -->
+          <div class="col-md-12 d-lg-none">
+            <div class="d-flex flex-column align-items-center">
+              <!-- Image -->
+              <div class="features-image scroll-reveal-left mb-4" style="transition-delay: 0.2s; width: 90%; max-width: 400px;">
+                <img src="public/assets/section-1.jpg" alt="Mobile Phone" class="img-fluid" />
               </div>
-            </div>
-            <!-- Right column with image and card -->
-            <div class="col-lg-6">
-              <div class="row g-0 align-items-center justify-content-center">
-                <!-- Changed to g-0 to remove gutters -->
-                <!-- Image -->
-                <div class="col-md-6 pe-0">
-                  <!-- Removed padding on right side -->
-                  <div class="features-image scroll-reveal-left" style="transition-delay: 0.2s">
-                    <img
-                      src="public/assets/section-1.jpg"
-                      alt="Mobile Phone"
-                      class="img-fluid"
-                    />
-                  </div>
-                </div>
-                <!-- Card -->
-                <div class="col-md-6 ps-0">
-                  <!-- Removed padding on left side -->
-                  <div class="features-card scroll-reveal-left" style="transition-delay: 0.4s">
-                    <p class="mb-0">
-                      Lorem ipsum dolor sit maet, consectetur adipiscing blandit
-                      massa enim. Nullam id varius nunc. Vivamus bibdendum mex.
-                    </p>
-                  </div>
-                </div>
+              <!-- Card -->
+              <div class="features-card scroll-reveal-left" style="transition-delay: 0.4s; width: 90%; max-width: 400px;">
+                <p class="mb-0">
+                  Lorem ipsum dolor sit maet, consectetur adipiscing blandit massa enim. Nullam id varius nunc. Vivamus bibdendum mex.
+                </p>
               </div>
             </div>
           </div>
+          
+          <!-- Desktop layout -->
+          <div class="col-md-6 pe-0 d-none d-lg-block">
+            <div class="features-image scroll-reveal-left" style="transition-delay: 0.2s">
+              <img src="public/assets/section-1.jpg" alt="Mobile Phone" class="img-fluid" />
+            </div>
+          </div>
+          <div class="col-md-6 ps-0 d-none d-lg-block">
+            <div class="features-card scroll-reveal-left" style="transition-delay: 0.4s">
+              <p class="mb-0">
+                Lorem ipsum dolor sit maet, consectetur adipiscing blandit massa enim. Nullam id varius nunc. Vivamus bibdendum mex.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
-
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Services Section -->
     <section id="services" class="services-section py-5 bg-light">
-        <div class="container">
-          <div class="row text-center position-relative justify-content-center">
-            <div
-              class="horizontal-line d-none d-md-block"
-              style="left: 22%"
-            ></div>
-            <div
-              class="horizontal-line d-none d-md-block"
-              style="left: 55%"
-            ></div>
-  
-            <div class="col-md-4 mb-4 mb-md-0">
-              <div class="service-box service-box-1">
-                <div class="icon-box">
-                  <i class="fas fa-user"></i>
-                </div>
-                <h3>Lorem ipsum</h3>
-                <p class="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur mauris nulla dui, in dapibus magna dignissim et.
-                </p>
+      <div class="container">
+        <div class="row text-center position-relative justify-content-center">
+          <div
+            class="horizontal-line d-none d-md-block"
+            style="left: 22%"
+          ></div>
+          <div
+            class="horizontal-line d-none d-md-block"
+            style="left: 55%"
+          ></div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <div class="service-box service-box-1">
+              <div class="icon-box">
+                <i class="fas fa-user"></i>
               </div>
+              <h3>Lorem ipsum</h3>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur mauris nulla dui, in dapibus magna dignissim et.
+              </p>
             </div>
-  
-            <div class="col-md-4 mb-4 mb-md-0">
-              <div class="service-box service-box-2">
-                <div class="icon-box">
-                  <i class="fas fa-layer-group transparent-icon"></i>
-                </div>
-                <h3>Lorem ipsum</h3>
-                <p class="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur mauris nulla dui, in dapibus magna dignissim et.
-                </p>
+          </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <div class="service-box service-box-2">
+              <div class="icon-box">
+                <i class="fas fa-layer-group transparent-icon"></i>
               </div>
+              <h3>Lorem ipsum</h3>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur mauris nulla dui, in dapibus magna dignissim et.
+              </p>
             </div>
-  
-            <div class="col-md-4">
-              <div class="service-box service-box-3">
-                <div class="icon-box">
-                  <i class="fas fa-desktop"></i>
-                </div>
-                <h3>Lorem ipsum</h3>
-                <p class="text-muted">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur mauris nulla dui, in dapibus magna dignissim et.
-                </p>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-box service-box-3">
+              <div class="icon-box">
+                <i class="fas fa-desktop"></i>
               </div>
+              <h3>Lorem ipsum</h3>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur mauris nulla dui, in dapibus magna dignissim et.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about-section py-5 text-white">
@@ -227,7 +245,7 @@
         <p class="mb-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
-    
+
         <a href="#contact" class="btn btn-lg btn-about"
           >Lorem Ipsum <i class="fas fa-arrow-right ms-2"></i
         ></a>
@@ -235,64 +253,65 @@
     </section>
 
     <section class="content-section py-5">
-        <div class="container">
-          <div class="row align-items-start">
-            <!-- Left column -->
-            <div class="col-lg-4 mb-4 mb-lg-0">
-              <div class="left-content scroll-reveal-right-delayed">
-                <span class="subheading">LOREM IPSUM</span>
-                <h2 class="text-about" style="font-size: 1.5rem; line-height: 1.3">
-                  Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.
-                </h2>
-              </div>
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- Left column -->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="left-content scroll-reveal-right-delayed">
+              <span class="subheading">LOREM IPSUM</span>
+              <h2
+                class="text-about"
+                style="font-size: 1.5rem; line-height: 1.3"
+              >
+                Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.
+              </h2>
             </div>
-  
-            <!-- Right column with content boxes -->
-            <div class="col-lg-8">
-              <div class="row gx-2">
-                <!-- First content box -->
-                <div class="col-md-6 mb-4 mb-md-0">
-                  <div class="content-box text-center h-100 scroll-reveal-right">
-                    <div class="icon-row mb-3">
-                      <i class="fas fa-layer-group content-icon"></i>
-                    </div>
-                    <div class="heading-row mb-3">
-                      <h4>Lorem ipsum</h4>
-                    </div>
-                    <div class="content-row">
-                      <p class="text-muted three-lines">
-                        Lorem ipsum dolor sit amet,<br />consectetur adipiscing
-                        elit.<br />Praesent blandit massa.
-                      </p>
-                    </div>
+          </div>
+
+          <!-- Right column with content boxes -->
+          <div class="col-lg-8">
+            <div class="row gx-2">
+              <!-- First content box -->
+              <div class="col-md-6 mb-4 mb-md-0">
+                <div class="content-box text-center h-100 scroll-reveal-right">
+                  <div class="icon-row mb-3">
+                    <i class="fas fa-layer-group content-icon"></i>
+                  </div>
+                  <div class="heading-row mb-3">
+                    <h4>Lorem ipsum</h4>
+                  </div>
+                  <div class="content-row">
+                    <p class="text-muted three-lines">
+                      Lorem ipsum dolor sit amet,<br />consectetur adipiscing
+                      elit.<br />Praesent blandit massa.
+                    </p>
                   </div>
                 </div>
-  
-                <!-- Second content box -->
-                <div class="col-md-6">
-                  <div class="content-box text-center h-100 scroll-reveal-right">
-                    <div class="icon-row mb-3">
-                      <i class="fas fa-mobile-alt content-icon"></i>
-                    </div>
-                    <div class="heading-row mb-3">
-                      <h4>Lorem ipsum</h4>
-                    </div>
-                    <div class="content-row">
-                      <p class="text-muted three-lines">
-                        Lorem ipsum dolor sit amet,<br />consectetur adipiscing
-                        elit.<br />Praesent blandit massa.
-                      </p>
-                    </div>
+              </div>
+
+              <!-- Second content box -->
+              <div class="col-md-6">
+                <div class="content-box text-center h-100 scroll-reveal-right">
+                  <div class="icon-row mb-3">
+                    <i class="fas fa-mobile-alt content-icon"></i>
+                  </div>
+                  <div class="heading-row mb-3">
+                    <h4>Lorem ipsum</h4>
+                  </div>
+                  <div class="content-row">
+                    <p class="text-muted three-lines">
+                      Lorem ipsum dolor sit amet,<br />consectetur adipiscing
+                      elit.<br />Praesent blandit massa.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-
-      
     <!-- Clients Section -->
     <section class="clients-section py-5">
       <div class="container">
