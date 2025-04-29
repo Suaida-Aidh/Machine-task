@@ -85,27 +85,279 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.hero-hamburger {
+
+
+ .hero-hamburger {
     position: absolute;
     top: 20px;
     right: 20px;
     z-index: 1000;
     cursor: pointer;
-}
-
-.hero-hamburger .line {
+  }
+  
+  .hero-hamburger .line {
     background-color: white;
     margin: 5px 0;
-}
-
-/* If you want the hamburger to be more visible on the hero section */
-.hero-hamburger .line {
     width: 30px;
     height: 3px;
     background-color: white;
     margin: 5px 0;
     transition: all 0.3s ease;
+  }
+  
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10rem;
+    transition: background-image 0.5s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  /* Flash effect overlay */
+  .flash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+  
+  .flash-animation {
+    animation: flashEffect 0.8s ease-out forwards;
+  }
+  
+  @keyframes flashEffect {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes revealTextFromFront {
+    0% {
+      opacity: 0;
+      transform: translateZ(100px);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateZ(0);
+      filter: blur(0);
+    }
+  }
+  
+  /* Add this to your CSS */
+  @keyframes revealFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(0); /* Ensure no blur on button */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0); /* Ensure no blur on button */
+    }
+  }
+
+  /* New text reveal animation for p tags */
+  @keyframes textReveal {
+    0% {
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transform: translateX(0);
+    }
+  }
+  
+  .hero-slide .lead.animate-p-text {
+    opacity: 0; /* Start hidden */
+    animation-fill-mode: forwards; /* Stay at end state */
+  }
+
+  .text-reveal-animate {
+    animation: textReveal 1s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+  
+.btn-hero {
+    background: linear-gradient(to right, #1ac6e5, #34e89e);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(0) !important; /* Force no blur */
+    backface-visibility: hidden; /* Prevent rendering issues */
+    -webkit-backface-visibility: hidden; /* For Safari */
 }
+  
+.text-about {
+    background: linear-gradient(to right, #1ac6e5, #34e89e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  
+.btn-hero:hover {
+    background-color: #00b3a1;
+    color: white;
+}
+  
+.hero-brand {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    size: 1rem;
+}
+  
+.hero-brand .navbar-brand {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+  
+.hero-brand .navbar-brand img {
+    width: 170px;
+    height: auto;
+}
+  
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    perspective: 1000px;
+}
+  
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+  
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+  
+/* Carousel controls styling */
+.carousel-controls {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+  
+.carousel-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+
+  
+/* Hero Slides */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+  
+/* Text Animation Styles */
+.animate-text {
+    opacity: 0;
+    transform: translateZ(100px);
+    filter: blur(8px);
+    will-change: transform, opacity, filter;
+    /* Remove transition property to prevent conflicts with animation */
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .hero-content {
+        text-align: center;
+    }
+    
+    .content-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .content-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+
 
 .sidebar {
     position: fixed;
@@ -282,96 +534,6 @@ body.sidebar-open {
     color: white;
 }
 
-.hero-section {
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    padding: 10rem;
-}
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.btn-hero {
-    background: linear-gradient(to right, #1ac6e5, #34e89e);
-    color: white; /* Assuming you want white text for contrast */
-    border: none; /* Optional: removes default button border */
-    border-radius: 4px; /* Optional: adds rounded corners */
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
-    transition: background-color 0.3s ease; /* Optional: adds hover effect transition */
-  }
-
-  .text-about {
-    background: linear-gradient(to right, #1ac6e5, #34e89e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  
-  .btn-hero:hover {
-    background-color: #00b3a1; /* Optional: slightly darker shade for hover effect */
-    color: white;
-  }
-
-.hero-brand {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    size: 1rem;
-}
-
-.hero-brand .navbar-brand {
-    font-size: 1rem;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.hero-brand .navbar-brand img {
-    width: 170px; /* Adjust this value as needed */
-    height: auto; /* Maintains aspect ratio */
-}
-
-.hero-hamburger {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
 
 .btn {
     display: inline-block;
@@ -470,11 +632,42 @@ body.sidebar-open {
     font-size: medium;
   }
 
+  /* Scroll reveal animation */
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
 /* If you also want to adjust the service icons */
 
+.service-box {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0s;
+}
 
-.service-box .icon-box i {
-    font-size: 2rem; /* Decrease this value to make icons smaller */
+/* Apply different delays for each box */
+.service-box-1 {
+    transition-delay: 0.2s;
+}
+.service-box-2 {
+    transition-delay: 0.4s;
+}
+.service-box-3 {
+    transition-delay: 0.6s;
+}
+
+/* Animated state */
+.service-box.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .icon-box {
@@ -483,7 +676,6 @@ body.sidebar-open {
     border-radius: 50%;
     background-color: #f8f9fa;
     display: flex;
-    border-color: icon-box;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
@@ -555,6 +747,25 @@ body.sidebar-open {
     margin-bottom: 1rem;
 }
 
+
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  }
+  
+  .scroll-reveal-right-delayed {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1) 0.4s; /* 0.4s delay */
+  }
+  
+  .scroll-reveal-right.revealed,
+  .scroll-reveal-right-delayed.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
 @media (max-width: 991.98px) {
     .content-box {
         max-width: 100%;
@@ -566,16 +777,27 @@ body.sidebar-open {
     }
 }
 /* Clients Section */
-.client-logo {
+
+
+
+/* Client Logo Slider Animation */
+.clients-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .client-logo {
     padding: 1rem;
     opacity: 0.8;
     transition: opacity 0.3s ease;
-
-}
-
-.client-logo:hover {
+    flex: 0 0 auto; /* Prevent logos from shrinking */
+    margin-right: 20px; /* Add spacing between logos */
+  }
+  
+  .client-logo:hover {
     opacity: 1;
-}
+  }
 
 /* CTA Section */
 .cta-section {
@@ -624,30 +846,4 @@ body.sidebar-open {
     }
 }
 
-@media (max-width: 767.98px) {
-    .hero-content {
-        text-align: center;
-    }
-    
-    .content-box {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .content-icon {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-    }
-}
 
